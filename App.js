@@ -1,13 +1,15 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from "./src/screens/HomeScreen";
+import TaskScreen from './src/screens/TaskScreen';
 
 const navigator = createStackNavigator(
   {
-    Home: HomeScreen
+    Home: HomeScreen,
+    Tasks: TaskScreen
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Tasks",
     defaultNavigationOptions: {
       title: "App"
     }
