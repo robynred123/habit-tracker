@@ -1,6 +1,6 @@
 # habit-tracker
 
-##To run this app
+## To run this app
 
 To run the app you first need to install Node and npm on your local machine.
 Once you have the code open run:
