@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-starter",
-    "slug": "rn-starter",
+    "name": "Habit Rabbit",
+    "slug": "Habit-Rabbit",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [

@@ -9,7 +9,7 @@ const navigator = createStackNavigator(
     Tasks: TaskScreen
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Tasks",
     defaultNavigationOptions: {
       title: "App"
     }

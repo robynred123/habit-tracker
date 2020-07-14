@@ -11,7 +11,7 @@ npm install
 
 then 
 ```
-npm run start
+npm start
 ```
 
 Once the app bundler has opened in a browser window, you can either connect a physical device or emulator, and press 'a' in the code terminal.
