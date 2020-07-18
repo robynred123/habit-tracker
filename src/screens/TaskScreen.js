@@ -11,15 +11,20 @@ const tasks = [
     { name: 'eat 3 meals', key: '4' }
 ]
 
-const TaskScreen = () => {
+const TaskScreen = ({ navigation }) => {
     return (
         <>
-            <ScrollView>
+            <View>
                 <Task Tasks={tasks} />
-            </ScrollView>
+            </View>
             <View  style={styles.button}>
-                <TouchableOpacity style={styles.touchableOpacity}>
-                <FontAwesomeIcon style={styles.icon} icon={faPlus} fill='white' size={24} />
+                <TouchableOpacity 
+                    style={styles.touchableOpacity}
+                    onPress={() => {
+                        navigation.navigate('AddTasks')
+                    }}
+                >
+                    <FontAwesomeIcon style={styles.icon} icon={faPlus} fill='white' size={24} />
                 </TouchableOpacity>
             </View>
         </>
@@ -28,8 +33,10 @@ const TaskScreen = () => {
 
 const styles = StyleSheet.create({
     button: {
-        marginLeft: '70%',
-        marginBottom: '5%',
+        flex: 1,
+        left: '70%',
+        bottom: '5%',
+        position: 'absolute'
     },
     touchableOpacity: {
         width: 80,
