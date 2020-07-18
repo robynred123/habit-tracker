@@ -20,17 +20,18 @@ const Task = () => {
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.container}>
-                            <Text style={styles.textStyle}>{item.name}</Text>
                             <TouchableOpacity
                                 style={styles.touchableOpacity}
                                 onPress={() => console.log(`Task Pressed ${item.name}`)}
                             >
-                                <FontAwesomeIcon icon={ faChevronRight } fill='green' size={24}/>
+                            <Text style={styles.textStyle}>{item.name}</Text>
+                            <FontAwesomeIcon style={styles.icon} icon={faChevronRight} fill='green' size={24} />
                             </TouchableOpacity>
                         </View>
                     )
                 }}
             />
+
         </View>
     )
 }
@@ -41,11 +42,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     touchableOpacity: {
-        justifyContent: 'space-around',
+    },
+    icon: {
         padding: 10,
         position: 'absolute',
         marginLeft: '90%',
-        fontSize: 18
+        justifyContent: 'space-around',
     },
     textStyle: {
         marginVertical: 10,
