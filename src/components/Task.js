@@ -4,27 +4,20 @@ import { FlatList } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const tasks = [
-    { name: 'Drink 2L of water', key: '1' },
-    { name: 'Take dog for a walk', key: '2' },
-    { name: 'water plants', key: '3' },
-    { name: 'eat 3 meals', key: '4' }
-]
-
-const Task = () => {
+const Task = ({ Tasks }) => {
     return (
         <View>
             <FlatList
-                keyExtractor={(task) => task.name}
-                data={tasks}
+                keyExtractor={(item) => item.key}
+                data={Tasks}
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.container}>
+                            <Text style={styles.textStyle}>{item.name}</Text>
                             <TouchableOpacity
                                 style={styles.touchableOpacity}
                                 onPress={() => console.log(`Task Pressed ${item.name}`)}
                             >
-                            <Text style={styles.textStyle}>{item.name}</Text>
                             <FontAwesomeIcon style={styles.icon} icon={faChevronRight} fill='green' size={24} />
                             </TouchableOpacity>
                         </View>
@@ -39,21 +32,22 @@ const Task = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        padding: 5
     },
     touchableOpacity: {
+        padding: 15,
+        position: 'absolute',
+        marginLeft: '85%',
     },
     icon: {
         padding: 10,
-        position: 'absolute',
-        marginLeft: '90%',
         justifyContent: 'space-around',
     },
     textStyle: {
         marginVertical: 10,
         fontSize: 18,
-        color: 'green',
-        paddingLeft: 5
+        paddingLeft: '5%'
     }
 });
 
