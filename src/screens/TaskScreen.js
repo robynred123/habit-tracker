@@ -15,7 +15,7 @@ const TaskScreen = ({ navigation }) => {
     return (
         <>
             <View>
-                <Task Tasks={tasks} />
+                <Task Tasks={tasks} navigation={navigation} />
             </View>
             <View  style={styles.button}>
                 <TouchableOpacity 

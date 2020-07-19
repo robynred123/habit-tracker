@@ -4,7 +4,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const Task = ({ Tasks }) => {
+const Task = ( { navigation, Tasks } ) => {
     return (
         <View>
             <FlatList
@@ -16,7 +16,7 @@ const Task = ({ Tasks }) => {
                             <Text style={styles.textStyle}>{item.name}</Text>
                             <TouchableOpacity
                                 style={styles.touchableOpacity}
-                                onPress={() => console.log(`Task Pressed ${item.name}`)}
+                                onPress={() => { navigation.navigate('EditTasks') }}
                             >
                             <FontAwesomeIcon style={styles.icon} icon={faChevronRight} fill='green' size={24} />
                             </TouchableOpacity>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        padding: 5
+        padding: 5,
     },
     touchableOpacity: {
         padding: 15,

@@ -1,32 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, ScrollView, TextInput } from 'react-native';
 
-const AddTaskScreen = () => {
-    const [name, setName] = useState(null);
+const EditTaskScreen = () => {
+    const [ name, setName ] = useState(null);
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text style={styles.textStyle}>Add a Task Name:</Text>
+                <Text style={styles.textStyle}>Task Name:</Text>
                 <TextInput
                     autoCapitalize='sentences'
-                    autocorrect ={true}
                     value={name}
                     onChangeText={name => setName(name)}
                     style={styles.textInput}
                 />
-            </View>
-            <View>
-                <TouchableOpacity 
-                    style={styles.touchableOpacity}
-                > 
-                    <Text 
-                        style={styles.textStyle}
-                        onPress={() => console.log('save')}
-                    > 
-                    Save 
-                    </Text>
-                </TouchableOpacity>
             </View>
         </ScrollView>
     )
@@ -48,4 +35,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default AddTaskScreen;
+export default EditTaskScreen;
