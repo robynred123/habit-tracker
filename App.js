@@ -15,7 +15,7 @@ const navigator = createStackNavigator(
   {
     initialRouteName: "Tasks",
     defaultNavigationOptions: {
-      title: "App"
+      title: "Habit Rabbit"
     }
   }
 );

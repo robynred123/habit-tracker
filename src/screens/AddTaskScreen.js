@@ -14,7 +14,7 @@ const AddTaskScreen = () => {
                     value={name}
                     onChangeText={name => setName(name)}
                     style={styles.textInput}
-                />
+                /> 
             </View>
             <View>
                 <TouchableOpacity 
