@@ -1,23 +1,16 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import HomeScreen from "./src/screens/HomeScreen";
-import TaskScreen from './src/screens/TaskScreen';
-import AddTaskScreen from './src/screens/AddTaskScreen';
-import EditTaskScreen from './src/screens/EditTaskScreen';
+import React from 'react';
+import Routes from './Routes';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './src/reducers';
 
-const navigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Tasks: TaskScreen,
-    AddTasks: AddTaskScreen,
-    EditTasks: EditTaskScreen
-  },
-  {
-    initialRouteName: "Tasks",
-    defaultNavigationOptions: {
-      title: "Habit Rabbit"
-    }
-  }
-);
+const App = () => {
+  return (
+    <Provider store={createStore(reducers)}>
+      <Routes />
+    </Provider>
+    
+  )
+}
 
-export default createAppContainer(navigator);
+export default App;
