@@ -8,7 +8,7 @@ const Task = ( { navigation, Tasks } ) => {
     return (
         <View>
             <FlatList
-                keyExtractor={(item) => item.key}
+                keyExtractor={(item) => item.id}
                 data={Tasks}
                 renderItem={({ item }) => {
                     return (

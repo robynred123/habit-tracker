@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Task from '../components/Task';
+import * as taskActions from '../actions';
 
-const tasks = [
-    { name: 'Drink 2L of water', key: '1' },
-    { name: 'Take dog for a walk', key: '2' },
-    { name: 'water plants', key: '3' },
-    { name: 'eat 3 meals', key: '4' }
-]
+const TaskScreen = ({navigation, tasks}) => {
+    useEffect(() => {
+        taskActions.getTasks()
+    }, [tasks])
 
-const TaskScreen = ({ navigation }) => {
     return (
         <>
             <View>
@@ -53,4 +52,10 @@ const styles = StyleSheet.create({
     }
 })
 
-export default TaskScreen;
+const mapStateToProps = state => {
+   return {
+       tasks: state.app.tasks
+   } 
+}
+
+export default connect(mapStateToProps, taskActions) (TaskScreen);

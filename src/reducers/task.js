@@ -3,8 +3,14 @@ const initialState = {
     selectedTask: null
 }
 
-const taskReducer = (state, action) => {
+const taskReducer = (state=initialState, action) => {
     switch(action.type) {
+        case 'GET_TASKS_SUCCESS':
+            console.log(action.payload)
+           return {
+               ...state,
+               tasks: action.payload
+           }
         case 'ADD_TASK_SUCCESS': 
         console.log('added task!')
             /*return {
