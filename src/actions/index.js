@@ -11,16 +11,10 @@ export const getTasks = () => {
     })
 }
 
-export const addTask = async(task) => {
-    try {
-        //taskQueries.addTask(task)
-        console.log('Add task actioncalled!')
-        dispatch({ 
-            type: 'ADD_TASK_SUCCESS',
-            //payload: task
-        })
-    }
-    catch(e) {
-        console.log(e)
-    };
+export const addTask = (task) => {
+    //taskQueries.addTask(task)
+    return ({ 
+        type: 'ADD_TASK_SUCCESS',
+        payload: task
+    })
 }

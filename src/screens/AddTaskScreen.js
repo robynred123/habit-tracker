@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { StyleSheet, View, TouchableOpacity, Text, ScrollView, TextInput } from 'react-native';
+import * as taskActions from '../actions';
 
-const AddTaskScreen = () => {
+const AddTaskScreen = ({navigation}) => {
     const [name, setName] = useState(null);
+
+    let task = {
+        name, 
+        /*days,
+        repeatFrequency,
+        reminders,
+        reminderTimes,
+        streak,
+        completed,  
+        lastCompleted, */
+    }
+
+    const dispatch = useDispatch()
+
+    const onSubmit = useCallback(() => dispatch(taskActions.addTask(task, navigation), [dispatch]));
 
     return (
         <ScrollView>
@@ -22,7 +39,7 @@ const AddTaskScreen = () => {
                 > 
                     <Text 
                         style={styles.textStyle}
-                        onPress={() => console.log('save')}
+                        onPress={() => onSubmit()}
                     > 
                     Save 
                     </Text>
@@ -48,4 +65,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default AddTaskScreen;
+export default connect(null)(AddTaskScreen);

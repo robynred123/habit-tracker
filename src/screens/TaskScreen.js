@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Task from '../components/Task';
 import * as taskActions from '../actions';
-import { render } from 'react-dom';
 
 const TaskScreen = ({navigation, tasks}) => {
 

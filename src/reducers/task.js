@@ -12,13 +12,12 @@ const taskReducer = (state=initialState, action) => {
            }
         case 'ADD_TASK_SUCCESS': 
         console.log('added task!')
-            /*return {
+            return {
                 ...state,
-                tasks: {
-                    ...tasks + action.payload
-                }
-                
-            }*/
+                tasks: [
+                    state.tasks.push(action.payload)
+                ]
+            }
 
         default:
             return state
