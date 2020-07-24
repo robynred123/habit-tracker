@@ -6,7 +6,6 @@ const initialState = {
 const taskReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'GET_TASKS_SUCCESS':
-            console.log(action.payload)
            return {
                ...state,
                tasks: action.payload

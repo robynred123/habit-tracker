@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import { StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Task from '../components/Task';
 import * as taskActions from '../actions';
+import { render } from 'react-dom';
 
 const TaskScreen = ({navigation, tasks}) => {
+
+    const dispatch = useDispatch()
+
+    const renderTasks = useCallback(() => dispatch(taskActions.getTasks(), [dispatch]));
+
     useEffect(() => {
-        taskActions.getTasks()
+        renderTasks()
     }, [tasks])
 
     return (
@@ -54,7 +60,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
    return {
-       tasks: state.app.tasks
+       tasks: state.tasks
    } 
 }
 

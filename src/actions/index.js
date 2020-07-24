@@ -2,7 +2,6 @@ import React from 'react';
 //import taskQueries from '../api/index'
 
 export const getTasks = () => {
-    console.log('Hello!')
     return ({ 
         type: 'GET_TASKS_SUCCESS',
         payload: {   
