@@ -1,15 +1,15 @@
 import React from 'react';
-import Routes from './Routes';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './src/reducers';
+import Routes from './Routes';
+import configureStore from './configureStore';
+
+const { store } = configureStore()
 
 const App = () => {
   return (
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
       <Routes />
     </Provider>
-    
   )
 }
 

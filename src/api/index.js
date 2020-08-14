@@ -1,3 +1,4 @@
+import { Database } from '../util/dbWrapper'
 /*
 task = {
     taskId int, 
@@ -25,12 +26,24 @@ export const createTable = () => {
   });
 };
 
-export const addTask = (...task) => {
+export const getTask = async() => {
+  const sql = `select * from tasks`;
+  const result = await this.db.execute(sql);
+  return result;
+}
+
+export const addTask = async(...task) => {
     const sql = `insert into tasks (taskId, name, days, repeatFrequency, reminders, reminderTimes, streak, completed, lastCompleted) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     await this.db.transaction(async (connection) => {
         const result = await connection.execute(sql, [taskId, name, days, repeatFrequency, reminders, reminderTimes, streak, completed, lastCompleted]);
         return result;
     });
 };
+
+const TaskQueries = {
+  createTable, 
+  getTask,
+  addTask
+}
 
 export default TaskQueries

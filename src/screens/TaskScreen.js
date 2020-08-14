@@ -6,15 +6,22 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Task from '../components/Task';
 import * as taskActions from '../actions';
 
-const TaskScreen = ({navigation, tasks}) => {
+const TaskScreen = ({navigation, tasks, taskKey}) => {
 
     const dispatch = useDispatch()
 
-    const renderTasks = useCallback(() => dispatch(taskActions.getTasks(), [dispatch]));
+    const getTasksAction = useCallback(() => dispatch(taskActions.getTasks(), [dispatch]));
+    const initialiseDbAction = useCallback(() => dispatch(taskActions.initialiseDb(), [dispatch]));
 
     useEffect(() => {
-        renderTasks()
-    }, [tasks])
+        initialiseDbAction()
+    }, [])
+
+    useEffect(() => {
+        getTasksAction()
+    }, [taskKey])
+
+    console.log(tasks)
 
     return (
         <>
@@ -59,7 +66,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
    return {
-       tasks: state.tasks
+       tasks: state.taskReducer.tasks,
+       taskKey: state.taskReducer.taskKey
    } 
 }
 

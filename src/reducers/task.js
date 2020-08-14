@@ -1,6 +1,12 @@
 const initialState = {
     tasks: [],
-    selectedTask: null
+    taskKey: null,
+    selectedTask: null,
+    loading: false,
+    error: {
+        visible: false,
+        message: ''
+    }
 }
 
 const taskReducer = (state=initialState, action) => {
@@ -8,17 +14,39 @@ const taskReducer = (state=initialState, action) => {
         case 'GET_TASKS_SUCCESS':
            return {
                ...state,
-               tasks: action.payload
+               tasks: action.data,
+               loading: false
            }
         case 'ADD_TASK_SUCCESS': 
         console.log('added task!')
+        //temporary solution to prevent state updates
+            if(action.payload.length === state.tasks.length){
+                return {
+                    ...state,
+                    loading:false
+                }
+            }
+            const updatedTasks = state.tasks.concat(action.payload)
             return {
                 ...state,
-                tasks: [
-                    state.tasks.push(action.payload)
-                ]
+                tasks: updatedTasks,
+                taskKey: action.payload.length,
+                loading: false
             }
-
+        case 'GET_TASKS_FAILURE':
+            return {
+                ...state,
+                loading: false,
+                error: {
+                    visible: true,
+                    message: 'error'
+                }
+            }
+        case 'GET_TASKS_LOADING':
+            return {
+                ...state,
+                loading: true
+            }
         default:
             return state
     }
