@@ -13,7 +13,7 @@ const navigator = createStackNavigator(
     EditTasks: EditTaskScreen
   },
   {
-    initialRouteName: "Tasks",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       title: "Habit Rabbit"
     }

@@ -27,9 +27,8 @@ const AddTaskScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(() => {
-        dispatch(taskActions.addTask(task), navigation.navigate("TaskScreen"), 
-        [dispatch,]
-    );
+        /*dispatch(taskActions.addTask(task), */ navigation.navigate("TaskScreen"), 
+        [dispatch]
   });
 
   return (

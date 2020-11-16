@@ -6,27 +6,22 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Task from '../components/Task';
 import * as taskActions from '../actions';
 
-const TaskScreen = ({navigation, tasks, taskKey}) => {
+const TaskScreen = (props) => {
+
+    console.log(props)
 
     const dispatch = useDispatch()
 
     const getTasksAction = useCallback(() => dispatch(taskActions.getTasks(), [dispatch]));
-    const initialiseDbAction = useCallback(() => dispatch(taskActions.initialiseDb(), [dispatch]));
-
-    useEffect(() => {
-        initialiseDbAction()
-    }, [])
 
     useEffect(() => {
         getTasksAction()
-    }, [taskKey])
-
-    console.log(tasks)
+    })
 
     return (
         <>
             <View>
-                <Task Tasks={tasks} navigation={navigation} />
+               {tasks && (<Task Tasks={props.tasks} navigation={props.navigation} />)}
             </View>
             <View  style={styles.button}>
                 <TouchableOpacity 
@@ -65,9 +60,10 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = state => {
+    console.log(state)
    return {
-       tasks: state.taskReducer.tasks,
-       taskKey: state.taskReducer.taskKey
+       tasks: state.tasks,
+       taskKey: state.taskKey
    } 
 }
 

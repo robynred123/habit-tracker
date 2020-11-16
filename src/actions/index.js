@@ -1,15 +1,17 @@
 import React from 'react';
-import taskQueries from '../api/index'
+import axios from 'axios';
+//import taskQueries from '../api/index'
 
-export const initialiseDb = () => {
+const url = 'http://localhost:3000/habits';
+
+export const initialiseDb = () => dispatch => {
     taskQueries.createTable()
 }
 
 export const getTasks = () => dispatch => {
     dispatch({ type: 'LOAD_TASKS_LOADING' });
-    
-    taskQueries.getTasks()
-    .then(response => response.json())
+
+    return axios.get(url)
     .then(data => dispatch({
             type: 'GET_TASKS_SUCCESS',
             data

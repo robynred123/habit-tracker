@@ -1,7 +1,7 @@
 import { Database } from '../util/dbWrapper'
 /*
-task = {
-    taskId int, 
+habit = {
+    habitId int, 
     name text, 
     days text, 
     repeatFrequency text, 
@@ -16,7 +16,7 @@ export const createTable = () => {
   this.db = new Database("db.db", {
     prepareConnFn: async (connection) => {
       try {
-        const sql = `create table if not exists tasks (id integer primary key not null, taskId int, name text, days text, repeatFrequency text, reminders int, reminderTimes text, streak int, completed int, lastCompleted text)`;
+        const sql = `create table if not exists habits (id integer primary key not null, habitId int, name text, days text, repeatFrequency text, reminders int, reminderTimes text, streak int, completed int, lastCompleted text)`;
         await connection.execute(sql);
         console.log('created table')
       } catch (e) {
@@ -27,13 +27,13 @@ export const createTable = () => {
 };
 
 export const getTask = async() => {
-  const sql = `select * from tasks`;
+  const sql = `select * from habits`;
   const result = await this.db.execute(sql);
   return result;
 }
 
 export const addTask = async(...task) => {
-    const sql = `insert into tasks (taskId, name, days, repeatFrequency, reminders, reminderTimes, streak, completed, lastCompleted) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `insert into habits (habitId, name, days, repeatFrequency, reminders, reminderTimes, streak, completed, lastCompleted) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     await this.db.transaction(async (connection) => {
         const result = await connection.execute(sql, [taskId, name, days, repeatFrequency, reminders, reminderTimes, streak, completed, lastCompleted]);
         return result;
