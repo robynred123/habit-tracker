@@ -7,6 +7,7 @@ import Task from '../components/Task';
 import * as taskActions from '../actions';
 
 const TaskScreen = (props) => {
+    let tasks = this.props.tasks
 
     console.log(props)
 
@@ -21,13 +22,13 @@ const TaskScreen = (props) => {
     return (
         <>
             <View>
-               {tasks && (<Task Tasks={props.tasks} navigation={props.navigation} />)}
+               {tasks && (<Task Tasks={tasks} navigation={this.props.navigation} />)}
             </View>
             <View  style={styles.button}>
                 <TouchableOpacity 
                     style={styles.touchableOpacity}
                     onPress={() => {
-                        navigation.navigate('AddTasks')
+                        this.props.navigation.navigate('AddTasks')
                     }}
                 >
                     <FontAwesomeIcon style={styles.icon} icon={faPlus} fill='white' size={24} />
@@ -62,8 +63,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
     console.log(state)
    return {
-       tasks: state.tasks,
-       taskKey: state.taskKey
+       tasks: state.taskReducer.tasks,
+       taskKey: state.taskReducer.taskKey
    } 
 }
 
