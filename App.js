@@ -3,7 +3,7 @@ import Routes from './Routes';
 import { Provider } from 'react-redux';
 import { configureStore } from './configureStore';
 
-const { store } = configureStore()
+const store = configureStore()
 
 const App = () => {
   return (
